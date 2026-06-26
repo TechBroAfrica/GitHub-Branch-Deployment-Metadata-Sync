@@ -6,14 +6,17 @@ import { OperationsService } from "./operations.service";
 import { IndexerLagModule } from "../indexer-lag/indexer-lag.module";
 import { AuditModule } from "../audit/audit.module";
 import { NotificationsModule } from "../notifications/notifications.module";
+import { ApiKeysModule } from "../api-keys/api-keys.module";
+import { ApiKeyGuard } from "../auth/guards/api-key.guard";
 
 @Module({
   imports: [
     IndexerLagModule,
     AuditModule,
     NotificationsModule,
+    ApiKeysModule,
   ],
   controllers: [OperationsController],
-  providers: [OperationsService],
+  providers: [OperationsService, ApiKeyGuard],
 })
 export class OperationsModule {}
