@@ -4,6 +4,7 @@ import { ApiKeyGuard } from '../auth/guards/api-key.guard';
 import { RequireScopes } from '../auth/decorators/require-scopes.decorator';
 import { BranchDeploymentsService } from './branch-deployments.service';
 import { SyncDeploymentDto, BranchDeploymentResponseDto } from './dto/sync-deployment.dto';
+import { BranchDeploymentRecord } from './branch-deployments.repository';
 
 @ApiTags('Admin - Deployments')
 @Controller('admin/deployments')
@@ -48,7 +49,7 @@ export class BranchDeploymentsController {
     return records.map(r => this.mapToResponse(r));
   }
 
-  private mapToResponse(record: any): BranchDeploymentResponseDto {
+  private mapToResponse(record: BranchDeploymentRecord): BranchDeploymentResponseDto {
     return {
       id: record.id,
       branchName: record.branch_name,
