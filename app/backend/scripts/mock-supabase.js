@@ -178,7 +178,7 @@ const server = http.createServer((req, res) => {
   res.end(JSON.stringify({ status: 'ok', service: 'mock-supabase' }));
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`[Mock Supabase] Server listening on port ${PORT}`);
   console.log(`[Mock Supabase] Pre-seeded API key: ${TEST_API_KEY}`);
 });
